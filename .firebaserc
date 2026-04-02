@@ -1,5 +1,5 @@
 {
   "projects": {
-    "default": "resilipath-production"
+    "default": "resilipath-prod"
   }
 }
