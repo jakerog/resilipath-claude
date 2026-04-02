@@ -70,3 +70,5 @@ node_modules/
 .terraform/
 *.tfstate*
 resilipath-prod-714bfd67b655.json
+.vercel
+.env*.local
