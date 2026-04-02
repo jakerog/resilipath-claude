@@ -69,3 +69,4 @@ node_modules/
 .dataconnect
 .terraform/
 *.tfstate*
+resilipath-prod-714bfd67b655.json
