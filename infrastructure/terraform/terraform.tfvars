@@ -1,0 +1,7 @@
+project_id              = "resilipath-prod"
+region                  = "us-central1"
+firebase_rt_db_url      = "https://firebaseio.com"
+firebase_storage_bucket = "resilipath-prod.firebasestorage.app"
+domain_name    = "resilipath.app"
+environment    = "prod"
+resend_api_key = "re_R3pNSnHL_KsiF7utFuAkZA2gcnzU6fztQ"

@@ -1,0 +1,46 @@
+type User @table {
+  username: String!
+  email: String!
+  createdAt: Timestamp!
+  firstName: String
+  lastName: String
+  profilePictureUrl: String
+  lastLoginAt: Timestamp
+}
+
+type Practice @table {
+  name: String!
+  category: String!
+  description: String!
+  createdAt: Timestamp!
+  durationHint: String
+  intensityScale: String
+  iconUrl: String
+}
+
+type UserPractice @table {
+  user: User!
+  practice: Practice!
+  startedAt: Timestamp!
+  goalFrequency: String
+  lastLoggedAt: Timestamp
+}
+
+type LogEntry @table {
+  userPractice: UserPractice!
+  logDate: Date!
+  createdAt: Timestamp!
+  durationMinutes: Int
+  intensityRating: Int
+  reflectionNotes: String
+}
+
+type Resource @table {
+  title: String!
+  url: String!
+  resourceType: String!
+  createdAt: Timestamp!
+  description: String
+  imageUrl: String
+  author: String
+}

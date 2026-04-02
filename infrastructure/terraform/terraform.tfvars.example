@@ -1,0 +1,21 @@
+# Copy this file to terraform.tfvars and fill in your values.
+# NEVER commit terraform.tfvars to git — it is in .gitignore.
+
+project_id     = "resilipath-prod"
+region         = "us-central1"
+domain_name    = "resilipath.app"
+environment    = "prod"
+resend_api_key = "re_xxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+
+# ── Placeholder image ──────────────────────────────────────────
+# true  = use Google's hello-world image (safe to apply right now,
+#         before any application code exists)
+# false = use your real images from Artifact Registry
+#         (switch to false after Sub-Phase 1.3 CI/CD has run)
+use_placeholder_image = true
+
+# ── Worker URL ─────────────────────────────────────────────────
+# Leave empty on first apply.
+# After terraform apply succeeds, run:  terraform output worker_url
+# Paste that URL here and re-run:  terraform apply -target=google_cloud_run_v2_service.api
+worker_url_override = ""

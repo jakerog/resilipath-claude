@@ -1,0 +1,100 @@
+mutation CreateDemoData @transaction @auth(level: USER, insecureReason: "This operation is for seeding demo data and should only be run by authenticated users with appropriate permissions.") {
+  user_insertMany(data: [
+    {
+      id: "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11",
+      username: "userone",
+      email: "userone@example.com",
+      createdAt: "2023-01-01T12:00:00Z",
+      firstName: "User",
+      lastName: "One"
+    },
+    {
+      id: "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a12",
+      username: "usertwo",
+      email: "usertwo@example.com",
+      createdAt: "2023-01-02T12:00:00Z",
+      firstName: "User",
+      lastName: "Two"
+    }
+  ])
+  practice_insertMany(data: [
+    {
+      id: "b0eebc99-9c0b-4ef8-bb6d-6bb9bd380a21",
+      name: "Mindful Breathing",
+      category: "Mindfulness",
+      description: "A practice focusing on deep and controlled breathing.",
+      createdAt: "2023-01-05T09:00:00Z",
+      durationHint: "5-10 minutes",
+      intensityScale: "Low",
+      iconUrl: "https://example.com/icons/breathing.png"
+    },
+    {
+      id: "b0eebc99-9c0b-4ef8-bb6d-6bb9bd380a22",
+      name: "Journaling for Gratitude",
+      category: "Reflection",
+      description: "Writing down things you are grateful for.",
+      createdAt: "2023-01-06T10:00:00Z",
+      durationHint: "10-15 minutes",
+      intensityScale: "Medium",
+      iconUrl: "https://example.com/icons/journaling.png"
+    }
+  ])
+  userPractice_insertMany(data: [
+    {
+      id: "c0eebc99-9c0b-4ef8-bb6d-6bb9bd380a31",
+      userId: "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11",
+      practiceId: "b0eebc99-9c0b-4ef8-bb6d-6bb9bd380a21",
+      startedAt: "2023-01-10T08:00:00Z",
+      goalFrequency: "Daily"
+    },
+    {
+      id: "c0eebc99-9c0b-4ef8-bb6d-6bb9bd380a32",
+      userId: "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a12",
+      practiceId: "b0eebc99-9c0b-4ef8-bb6d-6bb9bd380a22",
+      startedAt: "2023-01-11T09:00:00Z",
+      goalFrequency: "Weekly"
+    }
+  ])
+  logEntry_insertMany(data: [
+    {
+      id: "d0eebc99-9c0b-4ef8-bb6d-6bb9bd380a41",
+      userPracticeId: "c0eebc99-9c0b-4ef8-bb6d-6bb9bd380a31",
+      logDate: "2023-01-10",
+      createdAt: "2023-01-10T08:05:00Z",
+      durationMinutes: 7,
+      intensityRating: 4,
+      reflectionNotes: "Felt calm and focused after this session."
+    },
+    {
+      id: "d0eebc99-9c0b-4ef8-bb6d-6bb9bd380a42",
+      userPracticeId: "c0eebc99-9c0b-4ef8-bb6d-6bb9bd380a32",
+      logDate: "2023-01-11",
+      createdAt: "2023-01-11T09:10:00Z",
+      durationMinutes: 12,
+      intensityRating: 5,
+      reflectionNotes: "It was good to reflect on the positive things today."
+    }
+  ])
+  resource_insertMany(data: [
+    {
+      id: "e0eebc99-9c0b-4ef8-bb6d-6bb9bd380a51",
+      title: "Introduction to Mindfulness",
+      url: "https://example.com/resources/mindfulness-intro",
+      resourceType: "Article",
+      createdAt: "2023-01-03T14:00:00Z",
+      description: "A beginner's guide to mindfulness.",
+      imageUrl: "https://example.com/images/mindfulness.jpg",
+      author: "Mindful Guru"
+    },
+    {
+      id: "e0eebc99-9c0b-4ef8-bb6d-6bb9bd380a52",
+      title: "The Power of Journaling",
+      url: "https://example.com/resources/journaling-power",
+      resourceType: "Video",
+      createdAt: "2023-01-04T15:00:00Z",
+      description: "Discover the benefits of daily journaling.",
+      imageUrl: "https://example.com/images/journaling.jpg",
+      author: "Wellness Coach"
+    }
+  ])
+}

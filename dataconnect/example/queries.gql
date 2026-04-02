@@ -1,0 +1,52 @@
+# 1. Query to get all Practices (Publicly accessible)
+query ListAllPractices @auth(level: PUBLIC, insecureReason: "This operation is safe to expose to the public as it retrieves general practice information.") {
+  practices {
+    id
+    name
+    category
+    description
+    durationHint
+    intensityScale
+    iconUrl
+  }
+}
+
+# 2. Query to get a specific User's practices (Requires user authentication)
+query GetMyUserPractices @auth(level: USER) {
+  userPractices(where: {userId: {eq_expr: "auth.uid"}}) {
+    id
+    practice {
+      name
+      category
+      description
+    }
+    startedAt
+    goalFrequency
+    lastLoggedAt
+  }
+}
+
+# 3. Mutation to create a new LogEntry for a UserPractice (Requires user authentication)
+mutation CreateLogEntry($userPracticeId: UUID!, $logDate: Date!, $durationMinutes: Int, $intensityRating: Int, $reflectionNotes: String) @auth(level: USER) {
+  logEntry_insert(data: {
+    userPracticeId: $userPracticeId,
+    logDate: $logDate,
+    durationMinutes: $durationMinutes,
+    intensityRating: $intensityRating,
+    reflectionNotes: $reflectionNotes,
+    createdAt_expr: "request.time"
+  }) {
+    id
+  }
+}
+
+# 4. Mutation to update a User's profile (Requires user authentication and uses auth.uid)
+mutation UpdateMyProfile($firstName: String, $lastName: String, $profilePictureUrl: String) @auth(level: USER) {
+  user_update(key: {id_expr: "auth.uid"}, data: {
+    firstName: $firstName,
+    lastName: $lastName,
+    profilePictureUrl: $profilePictureUrl
+  }) {
+    id
+  }
+}
